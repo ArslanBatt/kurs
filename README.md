@@ -1,1 +1,1 @@
-# kurs
+# kursovaya=
