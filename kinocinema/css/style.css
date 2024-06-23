@@ -1,0 +1,562 @@
+/*шрифты*/
+@font-face {
+  font-family: 'Capriola-regular';
+  src: url(fonts/Capriola-Regular.ttf);
+}
+
+@font-face {
+  font-family: 'Roboto-Regular';
+  src: url(fonts/Roboto-Regular.ttf);
+}
+
+* {
+  margin: 0;
+  font-family: 'Roboto-Regular';
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*Шапка*/
+header {
+  width: 100%;
+  min-height: 127px;
+  background: #F42048;
+  font-family: 'Capriola-regular';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 64px;
+  font-weight: bold;
+  color: white;
+}
+
+nav {
+  width: 100%;
+  min-height: 36px;
+  background: #FF6088;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  text-align: center;
+  gap: 30px;
+}
+
+nav li a {
+  text-decoration: none;
+  color: white;
+}
+
+/*Подвал*/
+footer {
+  width: 100%;
+  min-height: 295px;
+  background-color: #2E2A2A;
+  font-family: 'Roboto-Regular', sans-serif;
+  /* Шрифт по умолчанию для футера */
+  padding: 30px;
+  /* Добавляем отступы */
+  box-sizing: border-box;
+  /* Учитываем отступы в ширине */
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-around;
+  /* Изменено */
+  align-items: flex-start;
+  color: white;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-logo {
+  font-family: 'Capriola-regular', sans-serif;
+  font-size: 64px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.footer-address {
+  font-size: 20px;
+  line-height: 1.5;
+  /* Увеличиваем межстрочный интервал */
+}
+
+.footer-right ul {
+  list-style: none;
+}
+
+.footer-right li {
+  margin-bottom: 15px;
+}
+
+.footer-right a {
+  text-decoration: none;
+  color: white;
+}
+
+/* Адаптивность футера */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    /* Размещаем элементы друг под другом */
+    align-items: center;
+    /* Центрируем по горизонтали */
+  }
+
+  .footer-right {
+    text-align: center;
+    /* Центрируем текст в правой части */
+    margin-top: 30px;
+    /* Добавляем отступ сверху */
+  }
+}
+
+
+/* Адаптивность для планшетов */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 48px;
+  }
+
+  nav ul {
+    gap: 20px;
+  }
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 32px;
+  }
+
+  nav ul {
+    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+}
+
+/* Адаптивность для больших экранов */
+@media (min-width: 1200px) {
+  .logo {
+    font-size: 80px;
+  }
+
+  nav ul {
+    gap: 50px;
+  }
+
+  header {
+    min-height: 150px;
+  }
+
+  nav {
+    min-height: 48px;
+  }
+}
+
+
+/*авторизация и регистрация*/
+
+.modal {
+  width: 273px;
+  height: 430px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-family: sans-serif;
+  border-radius: 15px;
+}
+
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal-reg {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: white;
+  color: #000;
+}
+
+.modal-sign {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: white;
+  color: #AAAAAA;
+}
+
+.modal2-reg {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: white;
+  color: #AAAAAA;
+}
+
+.modal2-sign {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  font-size: 15px;
+  cursor: pointer;
+  background-color: white;
+  color: #000;
+}
+
+
+
+/* Измененные стили */
+.modal__hr {
+  border: none;
+  border-top: 1px solid #A3A3A3;
+  width: 260px;
+  margin: 15px auto;
+}
+
+.modal__text {
+  font-size: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  /* Добавлен отступ снизу */
+}
+
+.modal__form-icon {
+  margin-right: 10px;
+}
+
+.modal__form-input,
+.modal__form-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  flex-grow: 1;
+  /* Позволяет полям ввода занимать доступное пространство */
+}
+
+.modal__form-row--checkbox {
+  align-items: flex-start;
+  /* Выравнивание по верху для чекбоксов */
+  margin-bottom: 5px;
+  /* Добавлен отступ снизу */
+}
+
+.modal__form-checkbox {
+  margin-right: 5px;
+}
+
+.modal__form-label {
+  font-size: 14px;
+}
+
+.modal__form-label span {
+  color: #F42048;
+}
+
+.modal__form-button {
+  background-color: #F42048;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.modal2 {
+  width: 273px;
+  height: 270px;
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-family: sans-serif;
+  border-radius: 15px;
+
+}
+
+.modal2 .modal-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.modal2 hr {
+  border: none;
+  border-top: 1px solid #A3A3A3;
+  width: 260px;
+  margin: 15px auto;
+}
+
+.modal2 p {
+  font-size: 15px;
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.modal2 form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal2 input[type="text"],
+.modal2 input[type="password"],
+.modal2 select {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+}
+
+.modal2 form>div {
+  display: flex;
+  align-items: center;
+}
+
+.modal2 form>div img {
+  margin-right: 10px;
+}
+
+.modal2 input[type="checkbox"] {
+  margin-right: 5px;
+}
+
+.modal2 label {
+  font-size: 14px;
+}
+
+.modal2 span {
+  color: #F42048;
+}
+
+.modal2 button[type="submit"] {
+  background-color: #F42048;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.modal,
+.modal2 {
+  position: fixed;
+  /* Фиксируем позицию на экране */
+  top: 50%;
+  /* Помещаем верхний край на 50% от верха окна */
+  left: 50%;
+  /* Помещаем левый край на 50% от левого края окна */
+  transform: translate(-50%, -50%);
+  /* Сдвигаем на половину ширины и высоты */
+}
+
+.modal,
+.modal2,
+.agreement-modal-container {
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+.agreement-modal-container {
+  opacity: 0;      /* По умолчанию делаем контейнер прозрачным */
+  transition: opacity 0.3s ease-in-out; /* Добавляем transition */
+}
+
+.agreement-modal-container.show {
+  opacity: 1; /* При появлении делаем контейнер видимым */
+}
+
+
+.modal,
+.modal2 {
+  display: none;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  opacity: 0; /* По умолчанию делаем модальное окно прозрачным */
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; /* Добавляем transition */
+}
+
+.modal.show, 
+.modal2.show {
+  opacity: 1;  /* При появлении делаем модальное окно видимым */
+} 
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.overlay.active {
+  display: block;   
+}
+
+@media (max-width: 768px) {
+
+  .modal,
+  .modal2 {
+    width: 90%;
+    max-width: 400px;
+    height: auto;
+  }
+
+  .modal__form-row,
+  .modal2 form>div {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modal__form-icon,
+  .modal2 form>div img {
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+
+  .modal__form-input,
+  .modal__form-select,
+  .modal2 input[type="text"],
+  .modal2 input[type="password"] {
+    width: 100%;
+  }
+}
+
+
+
+
+/*пользовательское соглашение*/
+
+.agreement-modal-container,
+.another-modal-container {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  /* Увеличиваем z-index, чтобы модальное окно было поверх всего */
+}
+
+.agreement-modal,
+.another-modal {
+  background-color: white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  border-radius: 10px;
+  max-width: 800px;
+  width: 90%;
+  overflow-y: auto;
+  /* Добавляем прокрутку */
+  max-height: 80%;
+  /* Ограничиваем максимальную высоту */
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.agreement-modal h2,
+.another-modal h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.agreement-modal article,
+.another-modal article {
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.agreement-modal section,
+.another-modal section {
+  margin-bottom: 30px;
+}
+
+.agreement-modal section h3,
+.another-modal section h3 {
+  margin-bottom: 10px;
+}
+
+.agreement-modal ul,
+.another-modal ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding-left: 10px;
+}
+
+.agreement-modal li,
+.another-modal li {
+  margin-bottom: 5px;
+}
+
+.modal__form-label span.open-agreement-button {
+  color: #F42048;
+  cursor: pointer;
+  text-decoration: underline;
+  /* Добавляем подчеркивание */
+}
+
+@media (max-width: 768px) {
+
+  .agreement-modal,
+  .another-modal {
+    max-width: 90%;
+  }
+}

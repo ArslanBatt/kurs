@@ -1,0 +1,377 @@
+*{
+    font-family: 'Roboto-Regular', sans-serif; /* Шрифт по умолчанию для футера */
+}
+
+
+.outer-block {
+    width: 100%;
+    height: 292px;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inner-block {
+    width: 90%;
+    /* Используйте проценты для адаптивности */
+    max-width: 1704px;
+    /* Ограничиваем максимальную ширину */
+    height: 235px;
+    background-color: #2E2A2A;
+    position: relative;
+    /* Для позиционирования точек */
+    margin: 0 auto;
+    /* Центрирование по горизонтали */
+}
+
+.dots {
+    position: absolute;
+    top: 245px;
+    left: 50%;
+    transform: translateX(-50%);
+    /* Центрирование */
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.7);
+    /* Прозрачный белый цвет */
+    border-radius: 50%;
+    /* Делаем точки круглыми */
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .inner-block {
+        width: 95%;
+        /* Увеличиваем ширину блока на меньших экранах */
+    }
+
+    .dots {
+        bottom: 15px;
+        /* Уменьшаем расстояние до точек */
+    }
+}
+
+
+/*Слайдер*/
+
+.slider {
+    width: 100%;
+    height: 100%;
+    /* Занимаем всю высоту inner-block */
+    overflow: hidden;
+    /* Скрываем контент за пределами слайдера */
+    position: relative;
+    /* Для позиционирования точек */
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    display: none;
+    /* По умолчанию скрываем все слайды */
+    position: absolute;
+    /* Позиционируем слайды друг над другом */
+    top: 0;
+    left: 0;
+}
+
+.slide img {
+    width: 100%;
+    /* Занимаем всю ширину слайда */
+    height: 100%;
+    /* Занимаем всю высоту слайда */
+    object-fit: cover;
+    /* Подгоняем изображение, сохраняя пропорции */
+}
+
+.slide.active {
+    display: block;
+    /* Показываем активный слайд */
+}
+
+.dots {
+    /* ... ваш существующий CSS для точек ... */
+    bottom: 20px;
+    z-index: 10;
+    /* Помещаем точки над слайдером */
+}
+
+.dot.active {
+    background-color: white;
+    /* Меняем цвет активной точки */
+}
+
+/*текст и выпадающий список*/
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 19px 94px;
+  }
+  
+  /* Адаптивность для экранов меньше 768px */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column; /* Размещаем элементы друг под другом */
+      padding: 20px; /* Уменьшаем отступы */
+    }
+  
+    .title {
+      margin-bottom: 10px; /* Добавляем отступ снизу текста */
+    }
+  }
+  
+  .title {
+    font-size: 25px;
+  }
+  
+  .rounded-select {
+    border-radius: 5px;
+    padding: 5px 10px;
+  }
+
+  /*линия*/
+
+  .line-container {
+    display: flex;
+    justify-content: center; /* Центрируем линию по горизонтали */
+  }
+  
+  .line {
+    width: 1734px;
+    height: 1px;
+    background-color: black;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 1734px) {
+    .line {
+      width: 80%;
+    }
+  }
+
+  /*фильтрация по дняям недели*/
+
+  .calendar { 
+    display: flex; 
+    gap: 10px; 
+    justify-content: center; 
+    padding: 19px; 
+  } 
+   
+  .calendar-content {  
+    display: flex; 
+  } 
+   
+  .days { 
+    display: flex; 
+    gap: 20px; 
+    flex-wrap: wrap; /* Позволяем дням переноситься на новую строку */
+  } 
+   
+  .day { 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    flex: 0 0 calc(100% / 11 - 10px); /* Адаптивная ширина для дней */
+    margin-bottom: 10px; /* Добавляем отступ снизу */
+    cursor: pointer;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+  } 
+  
+  .day:hover {
+    background-color: #f0f0f0; /* Пример светлого фона при наведении */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Пример тени при наведении */
+  }
+
+  .arrow { 
+    padding: 5px 10px; 
+    border-style: none; 
+    border-radius: 5px; 
+    background-color: transparent; 
+    cursor: pointer; 
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .arrow-active {
+    transition: transform 0.2s ease-in-out; /* Добавляем плавную анимацию */
+  }
+  
+  .left-arrow.arrow-active {
+    transform: scale(1.1); /* Масштабируем изображение */
+  }
+  
+  .right-arrow.arrow-active {
+    transform: scale(1.1); /* Масштабируем изображение */
+  }
+
+
+  @media (max-width: 768px) { 
+    .days {
+      gap: 10px; /* Уменьшаем интервал между днями на мобильных */
+    }
+
+    .day {
+      flex: 0 0 calc(50% - 5px); /* Два дня в ряд на мобильных */
+    }
+  }
+
+  .day.current-day {
+    color: #F42048; 
+    position: relative; /* Для позиционирования линии */
+    cursor: pointer;
+  }
+  
+  .day.current-day::after {
+    content: "";
+    position: absolute;
+    bottom: -5px; /* Позиция линии */
+    left: 50%; 
+    transform: translateX(-50%); 
+    width: 70px; /* Длина линии */
+    height: 3px; 
+    background-color: #F42048; 
+    cursor: pointer;
+
+  }
+
+
+/* Стили постера */
+
+.container-move {
+  display: flex;
+  flex-direction: column; /*  Располагаем элементы по вертикали  */
+  justify-content: center; 
+  align-items: center;
+  padding: 19px 94px;
+}
+
+.movie-card-link {
+  display: flex; 
+  flex-direction: column; /* Картинка и информация о фильме располагаются вертикально */
+  width: 100%; /* Занимаем всю доступную ширину */
+  margin-bottom: 20px; /* Отступ снизу */
+} 
+
+.movie-poster {
+  display: flex;
+  flex-direction: row; /* На больших экранах картинка и информация в ряд */
+  align-items: flex-start; 
+  width: 100%; /* Занимаем всю ширину контейнера */
+}
+
+.movie-poster img {
+  width: 50%; 
+  max-width: 250px;
+  height: auto;
+  margin-right: 20px; 
+}
+
+.movie-info {
+  text-align: left;
+}
+
+/*  Остальные стили  */
+@media (max-width: 768px) {
+  .movie-poster {
+    flex-direction: column; /* На маленьких экранах картинка и информация друг под другом */
+  }
+
+  .movie-poster img {
+    width: 100%; 
+    margin-right: 0; 
+    margin-bottom: 20px; /* Отступ снизу для картинки на мобильных */
+  }
+
+  .movie-info {
+    text-align: center;
+  }
+} 
+
+/* Остальные стили */
+.title-move {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding: 0 0 25px 0;
+    color: #000000;
+}
+
+.duration {
+    margin-bottom: 5px;
+    color: #737373;
+    padding: 0 0 25px 0;  
+}
+
+.description{
+  color: #000000;
+}
+
+.showtimes {
+    display: flex;
+    flex-wrap: wrap; /* Перенос кнопок на новую строку */
+    margin-top: 10px;
+}
+
+.time {
+  background-color: #D9D9D9; 
+  padding: 10px; 
+  margin: 5px;
+  text-align: center;
+  border-radius: 5px; 
+  transition: all 0.3s ease; 
+  overflow: hidden; /* Скрываем текст, выходящий за пределы */
+  position: relative; /* Добавляем позиционирование для дочерних элементов */
+  width: 199px;
+}
+
+.time:hover {
+  background-color: #F42048;
+  color: white;
+  cursor: pointer;
+}
+
+.time::before {
+  content: attr(data-time); /* Берем время из атрибута data-time */
+  display: block; /* Делаем его блочным элементом */
+  transition: opacity 0.3s ease; /* Добавляем плавное исчезновение */
+}
+
+.time:hover::before {
+  opacity: 0; /* Скрываем время при наведении */
+}
+
+.time::after {
+  content: "Купить";
+  position: absolute; 
+  top: 0; /* Привязываем к верхнему краю */
+  left: 0; /* Привязываем к левому краю */
+  width: 100%; /* Ширина на весь блок */
+  height: 100%; /* Высота на весь блок */
+  display: flex; /* Используем flexbox для центрирования */
+  justify-content: center; /* Центрируем по горизонтали */
+  align-items: center; /* Центрируем по вертикали */
+  color: white;
+  opacity: 0;
+  transition: opacity 0.3s ease; 
+}
+
+.time:hover::after {
+  opacity: 1; /* Показываем текст "Купить" при наведении */
+}
+
+/*линия между фильмами*/
+
+.line{
+  height: 1px;
+  background-color: #A3A3A3;
+  margin: 1% auto; 
+  max-width: 90%; /* Максимальная ширина 90% */
+}
+

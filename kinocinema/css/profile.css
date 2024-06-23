@@ -1,0 +1,184 @@
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .button {
+    width: 199px;
+    height: 57px;
+    border: none;
+    font-size: 30px;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 20px 10px;
+    text-decoration: none; 
+    background-color: #F42048; /* Цвет фона для всех кнопок */
+    color: white;             /* Цвет текста для всех кнопок */
+    display: flex;            /* Включаем flexbox для кнопки */
+    justify-content: center;  /* Центрируем текст по горизонтали */
+    align-items: center;      /* Центрируем текст по вертикали */
+  }
+  
+  .button-tickets, 
+  .button-exit {
+    background-color: #D9D9D9;
+    color: #F42048;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .button {
+      width: 100%; 
+      margin: 10px 0; 
+    }
+  } 
+
+  /*линия*/
+
+  .line-container {
+    display: flex;
+    justify-content: center; /* Центрируем линию по горизонтали */
+  }
+  
+  .line {
+    width: 1734px;
+    height: 1px;
+    background-color: black;
+  }
+  
+  /* Адаптивность */
+  @media (max-width: 1734px) {
+    .line {
+      width: 80%;
+    }
+  }
+      
+
+  .container {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    padding: 20px; 
+  }
+      
+  .input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    width: 100%; 
+  }
+      
+  label {
+    font-size: 18px;
+    margin-right: 10px;
+    white-space: nowrap;
+  }
+      
+  input {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    border: none; 
+    box-sizing: border-box; 
+  }
+      
+  .password-container {
+    position: relative; 
+  }
+      
+  .password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+      
+  @media screen and (max-width: 768px) {
+    .container {
+      align-items: center;
+    }
+      
+    input {
+      font-size: 16px; 
+    }
+  }
+
+
+  .container-move{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 19px 94px;
+  }
+  
+  .movie-poster {
+      display: flex;
+      flex-direction: column; /* Расположение по столбцу на маленьких экранах */
+      align-items: center; /* Центрирование по горизонтали */
+  }
+  
+  .movie-poster img {
+      width: 100%; 
+      max-width: 250px; /* Максимальная ширина изображения */
+      height: auto;
+      margin-bottom: 20px; 
+  }
+  
+  .movie-info {
+      text-align: center; /* Центрирование текста */
+  }
+  
+  /* Стили для разных размеров экрана */
+  @media (min-width: 768px) {
+      .movie-poster {
+          flex-direction: row; /* Расположение по строке на больших экранах */
+          align-items: flex-start; /* Выравнивание по верхней границе */
+      }
+  
+      .movie-poster img {
+          margin-bottom: 0; 
+          margin-right: 20px;
+          width: 50%; 
+      }
+  
+      .movie-info {
+          text-align: left; /* Выравнивание текста по левому краю */
+      }
+  }
+  
+  /* Остальные стили */
+  .title-move {
+      font-weight: bold;
+      margin-bottom: 5px;
+      padding: 0 0 25px 0;
+  }
+  
+  .duration {
+      margin-bottom: 5px;
+      color: #737373;
+      padding: 0 0 25px 0;  
+  }
+
+  .notification{
+    background-color: #D9D9D9; 
+    padding: 10px; 
+    margin: 5px;
+    text-align: center;
+    border-radius: 5px; 
+    transition: all 0.3s ease; 
+    overflow: hidden; /* Скрываем текст, выходящий за пределы */
+    position: relative; /* Добавляем позиционирование для дочерних элементов */
+    width: 199px;
+  }
+  .notification:hover {
+    background-color: #F42048;
+    color: white;
+    cursor: pointer;
+  }
+
+  .line {
+    height: 1px;
+    background-color: #A3A3A3;
+    margin: 0 auto; 
+    max-width: 90%; /* Максимальная ширина 90% */
+  }

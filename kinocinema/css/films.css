@@ -1,0 +1,580 @@
+*{
+    font-family: 'Roboto-Regular', sans-serif; /* Шрифт по умолчанию для футера */
+}
+
+
+/*постер и фон фильма*/
+
+
+.movie-content {
+  display: flex;
+  flex-direction: column; 
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  width: 100%;
+  align-items: center; 
+}
+
+.movie-poster {
+  width: 60%;
+  margin-bottom: 20px;
+  position: static;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-poster img {
+  width: 312px;
+  height: auto;
+  max-width: 400px;
+}
+
+.movie-info {
+  width: 90%; /* Ограничиваем ширину блока с информацией */
+  color: white;
+  text-align: left;
+  line-height: 1.8;
+  word-wrap: break-word; /* Разрешаем перенос слов */
+}
+
+.watch-trailer {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.watch-trailer:hover{
+  background-color: #F42048;
+  color: white;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.description {
+  margin-top: 10px;
+}
+
+@media (min-width: 768px) {
+  .movie-card {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .movie-content {
+    flex-direction: row;
+    width: 80%; 
+    align-items: center;
+  }
+
+  .movie-poster {
+    width: 40%;
+    margin-bottom: 0;
+    margin-right: 20px;
+    position: static;
+  }
+
+  .movie-info {
+    width: 60%;
+  }
+}
+
+/*сеансы и комментарии*/
+
+.main-container {
+  display: flex;
+  justify-content: flex-end; /* Выравнивание по правому краю */
+  width: 100%; /* Занимаем всю ширину страницы */
+}
+
+.container {
+  width: 300px;
+  margin-right: 30%; 
+}
+
+.session-group {
+  margin-bottom: 20px;
+}
+
+.session-date {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.showtimes {
+  display: flex;
+  flex-wrap: wrap; /* Перенос кнопок на новую строку */
+  margin-top: 10px;
+}
+
+.time {
+background-color: #D9D9D9; 
+padding: 10px; 
+margin: 5px;
+text-align: center;
+border-radius: 5px; 
+transition: all 0.3s ease; 
+overflow: hidden; /* Скрываем текст, выходящий за пределы */
+position: relative; /* Добавляем позиционирование для дочерних элементов */
+}
+
+.time:hover {
+background-color: #F42048;
+color: white;
+cursor: pointer;
+}
+
+.time::before {
+content: attr(data-time); /* Берем время из атрибута data-time */
+display: block; /* Делаем его блочным элементом */
+transition: opacity 0.3s ease; /* Добавляем плавное исчезновение */
+}
+
+.time:hover::before {
+opacity: 0; /* Скрываем время при наведении */
+}
+
+.time::after {
+content: "Купить";
+position: absolute; 
+top: 0; /* Привязываем к верхнему краю */
+left: 0; /* Привязываем к левому краю */
+width: 100%; /* Ширина на весь блок */
+height: 100%; /* Высота на весь блок */
+display: flex; /* Используем flexbox для центрирования */
+justify-content: center; /* Центрируем по горизонтали */
+align-items: center; /* Центрируем по вертикали */
+color: white;
+opacity: 0;
+transition: opacity 0.3s ease; 
+}
+
+.time:hover::after {
+opacity: 1; /* Показываем текст "Купить" при наведении */
+}
+
+@media (max-width: 400px) {
+  .container {
+      width: 100%;
+  }
+
+  .session-time {
+      flex-direction: column;
+  }
+}
+
+
+ /*трейлер*/
+ .modal-trailer {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-trailer {
+  background-color: #fefefe;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Ширина на мобильных */
+  max-width: 800px; /* Максимальная ширина на больших экранах */
+  position: relative;
+}
+
+#modalMovieTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Тень для текста */
+}
+
+/* Адаптивность для разных размеров экрана */
+@media (min-width: 768px) {
+  .modal-content-trailer {
+    width: 60%; /* Ширина на планшетах */
+  }
+}
+
+/* Кнопка закрытия */
+.close-trailer {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.close-trailer:hover,
+.close-trailer:focus {
+  color: black;
+  text-decoration: none;
+}
+
+/* Стили для контейнера iframe */
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Соотношение сторон 16:9 (9 / 16 * 100%) */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+
+/*наверх*/
+
+#back-to-top-btn {
+  position: fixed; 
+  bottom: 20px; 
+  right: 20px; 
+  padding: 1.5% 3%; 
+  background-color: #F42048;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease; 
+  font-size: 1rem;
+}
+
+#back-to-top-btn:hover {
+  background-color: #F42048; /* Цвет фона при наведении */
+}
+
+#back-to-top-btn.show {
+  opacity: 1;  /* Показываем кнопку */
+  pointer-events: auto; /* Делаем кнопку активной */
+}
+
+@media screen and (max-width: 768px) { 
+  #back-to-top-btn {
+    bottom: 10px; 
+    right: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+
+/* комментарий */
+.comments {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.user-comment {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.user-name {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.comm {
+  display: flex;
+}
+
+ .modal__form-input_comm {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #F42048; /* Изменено: граница цвета #F42048 */
+  border-radius: 20px 0px 0px 20px; /* Сглажены углы слева */
+  box-sizing: border-box;
+}
+
+.modal__form-btn {
+  padding: 10px 20px;
+  background-color: #F42048; /* Изменено: фон кнопки #F42048 */
+  color: white; /* Изменено: текст кнопки белый */
+  border: none;
+  border-radius: 0px 20px 20px 0px; /* Сглажены углы справа */
+  cursor: pointer;
+}
+
+.comments-list {
+  margin-top: 20px;
+}
+
+.comment {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.comment-author {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+.no-comments {
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .user-comment {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .user-name {
+    margin-bottom: 5px;
+  }
+
+  /* На мобильных устройствах углы инпута и кнопки скругляем полностью */
+  .modal__form-input_comm, 
+  .modal__form-btn {
+    border-radius: 20px;
+  }
+}
+
+/* Модальное окно зала */
+.modal_halls {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  overflow: auto;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal_hall {
+  width: 80%;
+  max-width: 800px;
+  margin: 100px auto;
+  background-color: #fff;
+  padding: 20px;
+  position: relative;
+  border-radius: 8px;
+  animation: slideIn 0.3s ease-in-out;
+}
+
+.modal-content-hall {
+  padding: 20px;
+  text-align: center;
+}
+
+.close {
+  font-size: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #aaa;
+}
+
+.screen {
+  width: 80%;
+  margin: 20px auto;
+  background-color: #ddd;
+  height: 10px;
+  border-radius: 15px;
+}
+
+.seats {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr); /* 16 мест в ряду */
+  gap: 5px;
+  margin-bottom: 20px;
+}
+
+.seat {
+  width: 30px;
+  height: 30px;
+  background-color: #e60023;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease;
+}
+
+.seat-row{
+  display: contents;
+}
+.seat .seat-number {
+  color: white;
+  font-size: 12px;
+}
+
+.seat .row-left,
+.seat .row-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  display: none; /* По умолчанию скрываем номера рядов */
+}
+
+.seat .row-left {
+  left: -15px; /* Сместите номер ряда немного влево */
+}
+
+.seat .row-right {
+  right: -15px; /* Сместите номер ряда немного вправо */
+}
+
+.seat.selected {
+  background-color: #530010;
+}
+
+.seat.taken {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.buy-button {
+  padding: 10px 20px;
+  background-color: #3f51b5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Отображаем номера рядов только для 1-х и 16-х мест */
+.seat:nth-child(16n + 1) .row-left {
+  display: block;
+}
+
+.seat:nth-child(16n) .row-right {
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .seats {
+    grid-template-columns: repeat(8, 1fr); /* 8 мест в ряду на планшетах */
+  }
+
+  .seat {
+    width: 25px; /* Уменьшаем размер мест */
+    height: 25px;
+  }
+
+  .seat .seat-number {
+    font-size: 10px; /* Уменьшаем размер номера места */
+  }
+
+  .seat .row-left,
+  .seat .row-right {
+    font-size: 8px; /* Уменьшаем размер номера ряда */
+  }
+}
+
+@media (max-width: 480px) {
+  .seats {
+    grid-template-columns: repeat(4, 1fr); /* 4 места в ряду на мобильных */
+  }
+
+  .seat {
+    width: 20px; /* Ещё уменьшаем размер мест */
+    height: 20px;
+  }
+
+  .seat .seat-number {
+    font-size: 8px; /* Ещё уменьшаем размер номера места */
+  }
+
+  .seat .row-left,
+  .seat .row-right {
+    display: none; /* Скрываем номера рядов на мобильных */
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-50px);
+  }
+}
+
+#myModal { 
+  opacity: 0;  /* Изначально невидимое */
+  transition: opacity 0.3s ease-in-out; /* Плавное изменение прозрачности */
+}
+
+/* Стили при активном классе */
+#myModal.show { 
+  opacity: 1;  /* Видимое */
+}
+
+
+
+.seat-selected {
+  background-color: #530010; /* Цвет для выбранных мест */
+}
+
+.seat-occupied {
+
+  background-color: grey; /* Цвет для занятых мест */
+  cursor: not-allowed;
+}
+
+/* Скрытие номеров мест на занятых местах */
+.seat-occupied .seat-number,
+.seat-occupied .row-left,
+.seat-occupied .row-right {
+  display: none;
+}
